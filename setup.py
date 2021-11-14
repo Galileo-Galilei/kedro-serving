@@ -60,8 +60,10 @@ setup(
             "jupyter>=1.0.0,<2.0.0",
         ],
     },
-    author="Galileo-Galilei",
-    entry_points={},
+    author="Yolan Honoré-Rougé",
+    entry_points={
+        "kedro.project_commands": ["kedro_serving =  kedro_serving.cli:commands"],
+    },
     zip_safe=False,
     keywords="",
     classifiers=[
