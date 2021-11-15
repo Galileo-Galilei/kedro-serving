@@ -17,7 +17,7 @@
 
 # What is kedro-serving?
 
-`kedro-serving` is a kedro-plugn for serving kedro pipelines. It aims to be easy to use, flexible, robust to be production ready. **As it is in its early stage of developpement, it is highly discouraged to use it for production in its current state.**   
+`kedro-serving` is a kedro-plugn for serving kedro pipelines. It aims to be easy to use, flexible, robust to be production ready. **As it is in its early stage of developpement, it is highly discouraged to use it for production in its current state.**  
 
 # How do I install kedro-serving?
 

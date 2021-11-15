@@ -1,6 +1,7 @@
 import click
-from kedro_serving.running_server import init_app
 import uvicorn
+
+from kedro_serving.running_server import init_app
 
 
 @click.group(name="Serving")

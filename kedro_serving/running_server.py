@@ -1,15 +1,15 @@
-from pathlib import Path
-from fastapi import FastAPI
-from typing import Optional, Dict, NamedTuple, List
-
-from kedro.framework.session import KedroSession
-from kedro.runner import SequentialRunner
-from kedro.io import DataCatalog, MemoryDataSet
-from kedro.framework.startup import bootstrap_project
-import numpy as np
-from pydantic import create_model_from_namedtuple
-import pandas as pd
 from logging import getLogger
+from pathlib import Path
+from typing import List, NamedTuple, Optional
+
+import numpy as np
+import pandas as pd
+from fastapi import FastAPI
+from kedro.framework.session import KedroSession
+from kedro.framework.startup import bootstrap_project
+from kedro.io import DataCatalog, MemoryDataSet
+from kedro.runner import SequentialRunner
+from pydantic import create_model_from_namedtuple
 
 LOGGER = getLogger(__name__)
 
