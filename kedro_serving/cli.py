@@ -19,6 +19,7 @@ def serving_commands():
 @serving_commands.command()
 @click.option(
     "--pipeline",
+    "-n",  # n for "name"
     help="The name of the kedro pipeline to serve. Default to '__default__'",
 )
 @click.option(
@@ -32,13 +33,19 @@ def serving_commands():
     default="local",
     help="The name of the kedro environment where the configuration is located",
 )
-def serve(
-    pipeline,
-    input_name,
-    env,
-    # port,
-    # host,  # extra_params,
-):
+@click.option(
+    "--host",
+    "-h",
+    default="127.0.0.1",
+    help="The host for API serving",
+)
+@click.option(
+    "--port",
+    "-p",
+    default=5000,
+    help="The port to which the API should listen to",
+)
+def serve(pipeline, input_name, env, port, host):
     """Serve a kedro pipeline as an API"""
     app = init_app(
         pipeline,
@@ -48,4 +55,4 @@ def serve(
     )
 
     # TODO: remove hardcoded config
-    uvicorn.run(app, host="127.0.0.1", port=5000, log_level="info")
+    uvicorn.run(app, host=host, port=port, log_level="info")
