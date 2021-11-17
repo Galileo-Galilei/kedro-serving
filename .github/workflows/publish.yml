@@ -60,5 +60,5 @@ jobs:
       uses: pypa/gh-action-pypi-publish@main
       with:
         user: __token__
-        password: ${{ secrets.PYPI_PASSWORD }} # see https://github.com/pypa/gh-action-pypi-publish#usage
+        password: ${{ secrets.PYPI_TOKEN }} # see https://github.com/pypa/gh-action-pypi-publish#usage
         verbose: true  # trace if the upload fails
