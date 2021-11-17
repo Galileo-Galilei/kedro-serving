@@ -57,7 +57,7 @@ jobs:
     #     repository_url: https://test.pypi.org/legacy/
     #     verbose: true  # trace if the upload fails
     - name: Publish distribution to PyPI  # official action from python maintainers
-      uses: pypa/gh-action-pypi-publish@main
+      uses: pypa/gh-action-pypi-publish@master
       with:
         user: __token__
         password: ${{ secrets.PYPI_TOKEN }} # see https://github.com/pypa/gh-action-pypi-publish#usage
