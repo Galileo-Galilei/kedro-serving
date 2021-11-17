@@ -19,6 +19,14 @@
 
 `kedro-serving` is a kedro-plugn for serving kedro pipelines. It aims to be easy to use, flexible, robust to be production ready. **As it is in its early stage of developpement, it is highly discouraged to use it for production in its current state.**  
 
+Coming soon:
+- enable parameters injection at runtime
+- supporting other inputs than pandas dataframe
+- documentation & examples
+- support for production-ready ASGI server (e.g., gunicorn)
+- extended configuration for artifacts
+- tests
+
 # How do I install kedro-serving?
 
 
