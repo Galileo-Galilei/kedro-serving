@@ -1,0 +1,3 @@
+fastapi
+uvicorn # check fastpi extra dependencies
+kedro

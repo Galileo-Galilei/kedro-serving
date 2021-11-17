@@ -51,17 +51,19 @@ setup(
             "pytest-lazy-fixture>=0.6.0, <1.0.0",
             "pytest-mock>=3.1.0, <4.0.0",
             "scikit-learn>=0.23.0, <0.25.0",
-            "flake8==3.9.2",  # ensure consistency with pre-commit
+            "flake8==4.0.1",  # ensure consistency with pre-commit
         ],
         "dev": [
-            "black==21.8b0",  # pin black version because it is not compatible with a pip range (because of non semver version number)
-            "isort==5.9.3",  # ensure consistency with pre-commit
+            "black==21.10b0",  # pin black version because it is not compatible with a pip range (because of non semver version number)
+            "isort==5.10.0",  # ensure consistency with pre-commit
             "pre-commit>=2.0.0,<3.0.0",
             "jupyter>=1.0.0,<2.0.0",
         ],
     },
-    author="Galileo-Galilei",
-    entry_points={},
+    author="Yolan Honoré-Rougé",
+    entry_points={
+        "kedro.project_commands": ["kedro_serving =  kedro_serving.cli:commands"],
+    },
     zip_safe=False,
     keywords="",
     classifiers=[
