@@ -14,14 +14,32 @@ from pydantic import create_model_from_namedtuple
 LOGGER = getLogger(__name__)
 
 
-def _convert_np_to_typing_types(x: np.dtype):
+def _convert_np_to_fastapi_types(x: np.dtype):
+    # TODO: make a better conversion, see
+    # https://pbpython.com/pandas_dtypes.html and
+    # https://stackoverflow.com/questions/47423930/how-to-convert-pandas-dataframe-columns-to-native-python-data-types
+
     mapping_np_typing = {
+        "object": "str",
+        "bool": "bool",
+        "bool_": "bool",
+        "int_": "int",
+        "int8": "int",
+        "int16": "int",
+        "int32": "int",
+        "int64": "int",
+        "uint8": "int",
+        "uint16": "int",
+        "uint32": "int",
+        "uint64": "int",
+        "float_": "float",
         "float16": "float",
         "float32": "float",
         "float64": "float",
-        "object": "str",
+        "datetime64": "datetime.datetime",
+        "datetime64[ns]": "datetime.datetime",
     }
-    return mapping_np_typing[x.name]
+    return mapping_np_typing.get(x.name, "str")
 
 
 def create_pipeline_input_base_model(data: pd.DataFrame):
@@ -29,7 +47,7 @@ def create_pipeline_input_base_model(data: pd.DataFrame):
     out of an example dataset
     """
     typed_columns = [
-        (k, _convert_np_to_typing_types(v)) for k, v in data.dtypes.iteritems()
+        (k, _convert_np_to_fastapi_types(v)) for k, v in data.dtypes.iteritems()
     ]
     model_schema = NamedTuple("PipelineInput", typed_columns)
 
