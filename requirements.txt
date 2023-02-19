@@ -1,3 +1,4 @@
-fastapi
+pandas>=1.0.0,<2.0.0
+fastapi>=0.60
 uvicorn # check fastpi extra dependencies
-kedro
+kedro>=0.18,<0.19
