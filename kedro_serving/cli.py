@@ -21,6 +21,7 @@ def serving_commands():
 @click.option(
     "--pipeline",
     "-n",  # n for "name"
+    default="__default__",
     help="The name of the kedro pipeline to serve. Default to '__default__'",
 )
 @click.option(
