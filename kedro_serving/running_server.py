@@ -5,6 +5,7 @@ from typing import List, NamedTuple, Optional
 import numpy as np
 import pandas as pd
 from fastapi import FastAPI
+from kedro.framework.project import find_pipelines
 from kedro.framework.session import KedroSession
 from kedro.framework.startup import bootstrap_project
 from kedro.io import DataCatalog, MemoryDataSet
@@ -76,7 +77,7 @@ def init_app(
     with KedroSession.create(env=env, extra_params="") as session:
         runner = SequentialRunner()
         context = session.load_context()
-        pipeline = context.pipelines[pipeline_name]
+        pipeline = find_pipelines()[pipeline_name]
         catalog = context.catalog
 
     # TODO: make copy mode customisable!
