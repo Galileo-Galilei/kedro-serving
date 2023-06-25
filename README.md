@@ -45,7 +45,17 @@ pip install --upgrade git+https://github.com/Galileo-Galilei/kedro-serving.git
 
 # Getting started
 
-Documentation coming soon...
+- Run `kedro info` to check if kedro recognizes kedro-serving as a plugin.
+- Change directory into your kedro project.
+- `kedro serving serve --pipeline my_pipeline_name --input-name my-input-name`
+  - For example, using the [spaceflight starter](https://docs.kedro.org/en/stable/tutorial/tutorial_template.html) project, I could run kedro-serving with this command: `kedro serving serve --pipeline data_processing --input-name companies`
+  - This sets up a server at http://localhost:5000 with two endpoints, `health` and `run`
+- Go to [http://localhost:5000/health](http://localhost:5000/health) to verify the server is running.
+- Use postman or similar to POST to [http://localhost:5000/run](http://localhost:5000/run) with a body containing a JSON list of records, like this example that works for the spaceflights starter:
+  - `[{"id": 1, "company_rating": 3, "company_location": "TX", "total_fleet_count": 23, "iata_approved": "n"}]`
+  - These records replace the input-name called out in the kedro-serving command when running the pipeline called out in the kedro-serving command.
+- If the records you pass in do not match the schema of the input-name you selected when initiating kedro-server, you will receive an error in JSON form.
+- If the pipeline run is successful, you will receive a response in JSON form containing the output data from the pipeline.
 
 # Release and roadmap
 
